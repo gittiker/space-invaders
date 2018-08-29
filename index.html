@@ -16,7 +16,7 @@
         var aliens, dir, tank, bullets, cities;
         
         function main() {
-            // create game canvas and inputhandeler
+            // create game canvas and inputhandler
             display = new Display(510, 600); // value:30
             input = new InputHandler();
 
@@ -25,12 +25,12 @@
             img.addEventListener("load", function() {
 
                 alSprite = [
-                    [],
-                    [],
-                    []
+                    [new Sprite(this), new Sprite(this)], // this == img
+                    [new Sprite(this), new Sprite(this)],
+                    [new Sprite(this), new Sprite(this)]
                 ];
-                taSprite = new Sprite();
-                ciSprite = new Sprite();
+                taSprite = new Sprite(this);
+                ciSprite = new Sprite(this);
 
                 // init and run the game
                 init();
