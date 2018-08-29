@@ -6,7 +6,7 @@ function Display(width, height) {
     this.canvas = document.createElement("canvas");
     this.canvas.width = this.width = width;
     this.canvas.height = this.height = height;
-    this.ctx = this.canvas.getContext("2d")     
+    this.ctx = this.canvas.getContext("2d");  
 
     // append canvas to body of document
     document.body.appendChild(this.canvas);
@@ -21,7 +21,7 @@ Display.prototype.drawSprite = function(sp, x, y) {
 
 // Sprite
 function Sprite(img, x, y, w, h) {
-    this.igm = img;
+    this.img = img;
     this.x = x;
     this.y = y;
     this.w = w;
