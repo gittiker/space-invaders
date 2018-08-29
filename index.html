@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Space Invaders</title>
-    <script src="./js/helpers.js"></script>
+    <script src="js/main.js"></script>
 
     <style>
     canvas {
@@ -20,6 +20,45 @@
 </head>
 <body>
     <script>
+        var display, input, frames;
+        var alSprite, taSprite, ciSprite;
+        var aliens, dir, tank, bullets, cities;
+
+        function main() {
+            display = new Display(510, 600);
+            input = new InputHandler();
+
+            var img = new Image();
+            img.addEventListener("load", function() {
+                alSprite = [
+                    [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)],
+                    [new Sprite(this, 22, 0, 15, 16), new Sprite(this, 22, 16, 16, 16)],
+                    [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
+                ];
+                taSprite = new Sprite();
+                ciSprite = new Sprite();
+            
+                init();
+                run();
+            });
+            img.src = "res/invaders.png";
+        };
+        function init() {};
+        function run() {
+            var loop = function() {
+                update();
+                render();
+                //loop is the function-object that need to be runned before rendering
+                window.requestAnimationFrame(loop, screen.canvas);
+            };
+            window.requestAnimationFrame(loop, screen.canvas);
+        };
+        function update() {};
+        function render() {
+            display.drawSprite(alSprite[0][0], 10, 10);
+        };
+
+        main();
     </script>
 </body>
 </html>
