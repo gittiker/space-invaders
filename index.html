@@ -15,7 +15,30 @@
         var alSprite, taSprite, ciSprite;
         var aliens, dir, tank, bullets, cities;
         
-        function main() {};
+        function main() {
+            // create game canvas and inputhandeler
+            display = new Display(510, 600); // value:30
+            input = new InputHandler();
+
+            // create all sprites from asset image
+            var img = new Image();
+            img.addEventListener("load", function() {
+
+                alSprite = [
+                    [],
+                    [],
+                    []
+                ];
+                taSprite = new Sprite();
+                ciSprite = new Sprite();
+
+                // init and run the game
+                init();
+                run();
+
+            });
+            img.src = "red/invaders.png";
+        };
 
         function init() {};
 
