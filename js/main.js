@@ -27,8 +27,8 @@ function Sprite(img, x, y, w, h) {
     this.h = h;
 };
 
-// InputHandeler
-function InputHandeler() {
+// InputHandler
+function InputHandler() {
     this.down = {};
     this.pressed = {};
 
@@ -43,10 +43,17 @@ function InputHandeler() {
     });
 };
 
-InputHandeler.prototype.isDown = function(code) {
-
+InputHandler.prototype.isDown = function(code) {
+    return this.down[code];
 };
 
-InputHandeler.prototype.isPressed = function(code) {
-    
+InputHandler.prototype.isPressed = function(code) {
+    // if key is registred as pressed return false else if
+	// key down for first time return true else return false
+    if (this.pressed[code]) {
+        return false;
+    } else if (this.down[code]) {
+        return this.pressed[code] = true;
+    }
+    return false;
 };
