@@ -20,11 +20,28 @@ Display.prototype.drawSprite = function(sp, x, y) {
 
 // Sprite
 function Sprite(img, x, y, w, h) {
-
+    this.igm = img;
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
 };
 
 // InputHandeler
-function InputHandeler() {};
+function InputHandeler() {
+    this.down = {};
+    this.pressed = {};
+
+    // capture key presses
+    var _this = this;
+    document.addEventListener("keydown", function(evt) {
+        _this.down[evt.keyCode] = true;
+    });
+    document.addEventListener("keyup", function(evt) {
+        delete _this.down[evt.keyCode];
+        delete _this.pressed[evt.keyCode];
+    });
+};
 
 InputHandeler.prototype.isDown = function(code) {
 
