@@ -25,9 +25,9 @@
             img.addEventListener("load", function() {
 
                 alSprite = [
-                    [new Sprite(this), new Sprite(this)], // this == img
-                    [new Sprite(this), new Sprite(this)],
-                    [new Sprite(this), new Sprite(this)]
+                    [new Sprite(this,  0, 0, 22, 16), new Sprite(this,  0, 16, 22, 16)], // this == img
+                    [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
+                    [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
                 ];
                 taSprite = new Sprite(this);
                 ciSprite = new Sprite(this);
@@ -42,7 +42,16 @@
 
         function init() {};
 
-        function run() {};
+        // Wrapper around the game loop function, updates and renders the game
+        function run() {
+            var loop = function(){
+                update();
+                render();
+
+                window.requestAnimationFrame(loop, display.canvas);
+            }
+            window.requestAnimationFrame(loop, display.canvas);
+        };
 
         function update() {};
 
