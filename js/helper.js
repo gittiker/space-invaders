@@ -6,8 +6,8 @@ function Bullet(x, y, vely, w, h, color) {
     this.x = x;
     this.y = y;
     this.vely = vely;
-    this.w = w;
-    this.h = h;
+    this.width = w;
+    this.height = h;
     this.color = color;
 }
 // Updates bullet velocity

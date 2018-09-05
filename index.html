@@ -53,6 +53,8 @@
             lvFrame = 60; // level difficulty
             dir = 1;
 
+            bullets = [];
+
             // create tank object
             tank = {
                 sprite: taSprite,
@@ -109,6 +111,15 @@
             // keep tank sprite inside of canvas
             tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
 
+            // create new bullet when spacebar is pressed
+            if (input.isPressed(32)) { //spacebar
+                bullets.push(new Bullet(tank.x, tank.y, -8, 2, 6, "#fff"));
+            }
+
+            for (var i=0, len = bullets.length; i < len; i++) {
+                bullets[i].update();
+            }
+
             // update aliens at current movement frequency
             if (frames % lvFrame === 0) {
                 spFrame = (spFrame + 1) % 2;
@@ -145,6 +156,14 @@
                 var a = aliens[i];
                 display.drawSprite(a.sprite[spFrame], a.x, a.y);
             }
+
+            // push new bullet
+            display.ctx.save();
+            for (var i=0, len = bullets.length; i < len; i++) {
+                display.drawBullet(bullets[i]);
+            }
+            display.ctx.restore();
+
             // draw the tank sprite
             display.drawSprite(tank.sprite, tank.x, tank.y);
         };
