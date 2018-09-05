@@ -1,5 +1,20 @@
 // Helper Functions
 
+
+// Bullet
+function Bullet(x, y, vely, w, h, color) {
+    this.x = x;
+    this.y = y;
+    this.vely = vely;
+    this.w = w;
+    this.h = h;
+    this.color = color;
+}
+// Updates bullet velocity
+Bullet.prototype.update = function() {
+    this.y += this.vely;
+}
+
 // Screen
 function Display(width, height) {
     // create canvas and grab 2d context
@@ -16,6 +31,11 @@ Display.prototype.drawSprite = function(sp, x, y) {
     // draw part of spritesheet to canvas
     this.ctx.drawImage(sp.img, sp.x, sp.y, sp.w, sp.h, x, y, sp.w, sp.h);
 };
+
+Display.prototype.drawBullet = function(bullet) {
+    this.ctx.fillStyle = bullet.color;
+    this.ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+}
 
 Display.prototype.clear = function() {
     this.ctx.clearRect(0, 0, this.width, this.height);
