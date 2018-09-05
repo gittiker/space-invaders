@@ -1,5 +1,7 @@
 // helper functions
-
+function AABBIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
+    return ax < bx+bw && bx < ax+aw && ay < by+bh && by < ay+ah;
+};
 // Bullets
 function Bullet(x, y, vely, w, h, color) {
     this.x = x;

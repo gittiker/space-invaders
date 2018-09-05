@@ -104,6 +104,54 @@
             // Kepp tank in canvas with 30 px distance to borders
             tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
             
+            // Shoot when is down
+            if (input.isPressed(32)) {
+                bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+            }
+            // Easter Egg minigun --> add music
+            if (input.isDown(221)) {
+                bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+            }
+            
+            // let the bullets move
+            for (var i = 0, len = bullets.length; i < len; i++) {
+                var b = bullets[i];
+
+                b.update();
+                
+                //remove bullet logic
+                if (b.y + b.height < 0 || b.y > screen.height) {
+                    bullets.splice(i,1);
+                    i--;
+                    len--;
+                    continue;
+                }
+
+                for (var j = 0, len2 = aliens.length; j < len2; j++) {
+                    var a = aliens[j];
+                    if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
+                        aliens.splice(j, 1);
+                        j--;
+                        len2--;
+                        bullets.splice(i, 1);
+                        i--;
+                        len--;
+                    }
+                }
+            }
+
+            if (Math.random() < 0.03 && aliens.length > 0) {
+                var a = aliens[Math.round(Math.random() * (aliens.length - 1))];
+                for (var i = 0, len = aliens.length; i < len; i++) {
+                    var b = aliens[i];
+                    
+                    if (AABBIntersect(a.x, a.y, a.w, 100, b.x, b.y, b.w, b.h)) {
+                        a = b;
+                    }
+                }
+                bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4, 2, 4, "#fff"));
+            }
+
             // Update at the current movement currency
             if (frames % lvFrame ===0) {
                 spFrame = (spFrame + 1) % 2;
@@ -140,6 +188,14 @@
                 var a = aliens[i];
                 display.drawSprite(a.sprite[spFrame], a.x, a.y);
             }
+            
+            // draw bullets
+            display.ctx.save();
+            for (var i = 0, len = bullets.length; i < len; i++) {
+                display.drawBullet(bullets[i]);
+            }
+            display.ctx.restore();
+
             // draw tank sprite
             display.drawSprite(tank.sprite, tank.x, tank.y);
         };
