@@ -113,11 +113,35 @@
 
             // create new bullet when spacebar is pressed
             if (input.isPressed(32)) { //spacebar
-                bullets.push(new Bullet(tank.x, tank.y, -8, 2, 6, "#fff"));
+                bullets.push(new Bullet(tank.x + 10 , tank.y, -8, 2, 6, "#fff"));
             }
 
+            // Bullet logic
             for (var i=0, len = bullets.length; i < len; i++) {
-                bullets[i].update();
+                var b = bullets[i];
+
+                b.update();
+                
+                // remove bullet if it goes outside of canvas
+                if (b.y + b.height < 0 || b.y > display.height) {
+                    bullets.splice(i, 1);
+                    i--;
+                    len--;
+                    continue;
+                }
+            }
+
+            if (Math.random() < 0.03 && aliens.length > 0) {
+                var a = aliens[Math.round(Math.random() * (aliens.length -1))];
+
+                for (var i = 0, len = aliens.length; i < len; i++) {
+                    var b = aliens[i];
+
+                    if (AABBIntersect(a.x, a.y, a.w, 100, b.x, b.y, b.w, b.h)) {
+                        a = b;
+                    }
+                    bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4, 2, 4, "#fff"));
+                }
             }
 
             // update aliens at current movement frequency
