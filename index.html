@@ -25,6 +25,7 @@
         var aliens, dir, tank, bullets, cities;
 
         function main() {
+            // create game canvas and inputhandler
             display = new Display(502, 600);
             input = new InputHandler();
 
@@ -51,6 +52,7 @@
             lvFrame = 60;
             dir = 1;
 
+            // Create tank object
             tank = {
                 sprite: taSprite,
                 x: (display.width - taSprite.w) / 2,
@@ -66,7 +68,8 @@
                     // create right offsetted alien and push alien to array
                     aliens.push({
                         sprite: alSprite[a],
-                        // [0, 4, 0] distance to next alien
+                        // [0, 4, 0] distance to next alien for the pink aliens
+                        // the pink aliens are smaller then the other aliens
                         x: 30 + j*30 + [0, 4, 0][a],
                         y: 30 + i*30,
                         w: alSprite[a][0].w,
@@ -86,20 +89,23 @@
             window.requestAnimationFrame(loop, display.canvas);
         };
         function update() {
-
+            frames++;
+            // Update tank postiton by input
             if (input.isDown(37)) { //Left
                 tank.x -= 4;
             }
             if (input.isDown(39)) { //Right
                 tank.x += 4;
             }
+            // Kepp tank in canvas with 30 px distance to borders
             tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
-
-            frames++;
+            
+            // Update at the current movement currency
             if (frames % lvFrame ===0) {
                 spFrame = (spFrame + 1) % 2;
+                
                 var _max = 0, _min = display.width;
-
+                //iterate trough aliens and update positions
                 for (var i = 0, len = aliens.length; i < len; i++) {
                     var a = aliens[i];
                     a.x += 30 * dir;
@@ -123,12 +129,13 @@
             // display.drawSprite(alSprite[0][0], 10, 10);
             // display.drawSprite(taSprite, 10, 10);
             // display.drawSprite(ciSprite, 10, 10);
-
+            
+            // draw all aliens
             for (var i = 0, len = aliens.length; i < len; i++) {
                 var a = aliens[i];
                 display.drawSprite(a.sprite[spFrame], a.x, a.y);
             }
-
+            // draw tank sprite
             display.drawSprite(tank.sprite, tank.x, tank.y);
         };
 
