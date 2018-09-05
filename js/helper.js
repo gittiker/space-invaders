@@ -14,7 +14,6 @@ function Display(width, height) {
 
 Display.prototype.drawSprite = function(sp, x, y) {
     // draw part of spritesheet to canvas
-    // this.ctx.drawImage(sp.img, sp.x, sp.y, sp.w, sp.h, x, y, sp.w, sp.h);
     this.ctx.drawImage(sp.img, sp.x, sp.y, sp.w, sp.h, x, y, sp.w, sp.h);
 };
 
