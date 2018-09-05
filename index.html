@@ -23,7 +23,8 @@
         var display, input, frames, spFrame, lvFrame;
         var alSprite, taSprite, ciSprite;
         var aliens, dir, tank, bullets, cities;
-
+        
+        // main function
         function main() {
             // create game canvas and inputhandler
             display = new Display(502, 600);
@@ -44,7 +45,7 @@
             });
             img.src = "res/invaders.png";
         };
-
+        // initializing values and playground
         function init() {
             frames = 0;
             spFrame = 0; 
@@ -58,6 +59,8 @@
                 x: (display.width - taSprite.w) / 2,
                 y: display.height - (30 + taSprite.h)
             };
+
+            bullets = [];
             // create and populate alien array
             aliens = [];
             // rows = order of aliens in game
@@ -78,7 +81,7 @@
                 }
             }
         };
-
+        // run the game
         function run() {
             var loop = function() {
                 update();
@@ -88,6 +91,7 @@
             };
             window.requestAnimationFrame(loop, display.canvas);
         };
+        // update game logic
         function update() {
             frames++;
             // Update tank postiton by input
@@ -123,6 +127,7 @@
                 } 
             }
         };
+        // build screen
         function render() {
             display.clear();
             // select the enemy figure
@@ -138,7 +143,6 @@
             // draw tank sprite
             display.drawSprite(tank.sprite, tank.x, tank.y);
         };
-
         main();
     </script>
 </body>
