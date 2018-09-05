@@ -11,7 +11,7 @@
 </head>
 <body>
     <script>
-        var display, input, frames;
+        var display, input, frames, spFrame, lvFrame;
         var alSprite, taSprite, ciSprite;
         var aliens, dir, tank, bullets, cities;
         
@@ -43,6 +43,9 @@
         // Initializing values and playground
         function init() {
             frames = 0;
+            spFrame = 0;
+            lvFrame = 60;
+            dir = 1;
 
             // create and populate alien array
             aliens = [];
@@ -74,13 +77,25 @@
             window.requestAnimationFrame(loop, display.canvas);
         };
 
-        function update() {};
+        function update() {
+            frames++;
+            if (frames % lvFrame === 0) {
+                spFrame = (spFrame + 1) % 2;
+
+                for (var i = 0, len = aliens.length; i < len; i++) {
+                    var a = aliens[i];
+                    a.x += 30 * dir;
+                }
+            }
+        };
         
         // Draws the sprites
         function render() {
+            display.clear();
+            
             for (var i=0, len = aliens.length; i < len; i++) {
                 var a = aliens[i];
-                display.drawSprite(a.sprite[0], a.x, a.y);
+                display.drawSprite(a.sprite[spFrame], a.x, a.y);
             }
         };
 

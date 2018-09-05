@@ -17,6 +17,10 @@ Display.prototype.drawSprite = function(sp, x, y) {
     this.ctx.drawImage(sp.img, sp.x, sp.y, sp.w, sp.h, x, y, sp.w, sp.h);
 };
 
+Display.prototype.clear = function() {
+    this.ctx.clearRect(0, 0, this.width, this.height);
+};
+
 
 // Sprite
 function Sprite(img, x, y, w, h) {
