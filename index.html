@@ -91,6 +91,7 @@
             if (input.isDown(39)) { //right
                 tank.x += 4;   
             }
+            tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
 
             frames++;
             if (frames % lvFrame === 0) {
@@ -105,7 +106,7 @@
                     _min = Math.min(_min, a.x);
                 }
                 // changes direction of movement
-                if (_max > display.width || _min < 0) {
+                if (_max > display.width || _min < 30) {
                     dir *= -1;
                     for (var i = 0, len = aliens.length; i < len; i++) {
                         aliens[i].x += 30 * dir;
