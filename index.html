@@ -42,11 +42,13 @@
 
         // Initializing values and playground
         function init() {
+            // set start settings
             frames = 0;
             spFrame = 0;
-            lvFrame = 60; //Level-Difficulty
+            lvFrame = 60; // level difficulty
             dir = 1;
 
+            // create tank object
             tank = {
                 sprite: taSprite,
                 x: (display.width - taSprite.w) / 2,
@@ -55,7 +57,7 @@
 
             // create and populate alien array
             aliens = [];
-            var rows = [1, 0, 0, 2, 2];
+            var rows = [1, 0, 0, 2, 2]; // sprite distance control: sprite 1 is 4px smaller
 
             for (var i = 0, len = rows.length; i < len; i++) {
                 for (var j = 0; j < 10; j++) {
@@ -84,28 +86,34 @@
         };
 
         function update() {
+            // update frame count
+            frames++;
 
+            // update tank postition based on pressed key
             if (input.isDown(37)) { //left
                 tank.x -= 4;
             }
             if (input.isDown(39)) { //right
                 tank.x += 4;   
             }
+            // keep tank sprite inside of canvas
             tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
 
-            frames++;
+            // update aliens at current movement frequency
             if (frames % lvFrame === 0) {
                 spFrame = (spFrame + 1) % 2;
 
                 var _max = 0,_min = display.width;
+                // iterate through aliens and update postition
                 for (var i = 0, len = aliens.length; i < len; i++) {
                     var a = aliens[i];
                     a.x += 30 * dir;
-
+                    
+                    // find min/max values of all aliens for direction change
                     _max = Math.max(_max, a.x + a.w);
                     _min = Math.min(_min, a.x);
                 }
-                // changes direction of movement
+                // mirror direction of alien movement
                 if (_max > display.width || _min < 30) {
                     dir *= -1;
                     for (var i = 0, len = aliens.length; i < len; i++) {
@@ -118,19 +126,19 @@
         
         // Draws the sprites
         function render() {
-            display.clear();
+            display.clear(); // clear the game canvas
 
+            // draw all aliens
             for (var i=0, len = aliens.length; i < len; i++) {
                 var a = aliens[i];
                 display.drawSprite(a.sprite[spFrame], a.x, a.y);
             }
+            // draw the tank sprite
             display.drawSprite(tank.sprite, tank.x, tank.y);
         };
 
+        // start and run the game
         main();
     </script>
-
-
-    <!-- <canvas height="400px" width="600px"></canvas> -->
 </body>
 </html>
