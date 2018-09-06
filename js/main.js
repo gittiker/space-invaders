@@ -2,9 +2,7 @@ var display, input, frames, spFrame, lvFrame;
 var alSprite, taSprite, ciSprite;
 var aliens, dir, tank, bullets, cities;
 
-/*
-    Main functions
-*/
+/* Main functions */
 function main() {
     // create game canvas and inputhandler
     display = new Display(502, 600); // value:30
@@ -30,9 +28,7 @@ function main() {
     img.src = "res/invaders.png";
 };
 
-/*
-    Initializing values and playground
-*/
+/* Initializing values and playground */
 function init() {
     // set start settings
     frames = 0;
@@ -120,9 +116,7 @@ function init() {
     }
 };
 
-/*
-    Wrapper around the game loop function, updates and renders the game
-*/
+/* Wrapper around the game loop function, updates and renders the game */
 function run() {
     var loop = function(){
         update();
@@ -133,9 +127,7 @@ function run() {
     window.requestAnimationFrame(loop, display.canvas);
 };
 
-/*
-    Update game logic
-*/
+/* Update game logic */
 function update() {
     // update frame count
     frames++;
@@ -260,9 +252,7 @@ function update() {
     }
 };
 
-/*
-    Draws sprites
-*/
+/* Draws sprites */
 function render() {
     display.clear(); // clear the game canvas
 
@@ -285,7 +275,5 @@ function render() {
     display.drawSprite(tank.sprite, tank.x, tank.y);
 };
 
-/*
-Start and run the game
-*/
+/* Start and run the game */
 main();
