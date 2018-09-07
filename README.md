@@ -25,7 +25,7 @@ Tested with
 ## Known-Bugs
 
 * Google Chrome Browser is not able to display the game properly. The game will suspend until the page is being reloaded.
-* After starting the game pressing the spacebar will result in restarting the game over and over again. You'll notice aliens and tanks speed increasing significantly.
+* After the game has been started, pressing the spacebar will increase the speed of the game.
 * If 'n' is pressed during the bug described above, the game restarts at the speed set by the bug.
 
 ## Versioning
