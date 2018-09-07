@@ -1,11 +1,13 @@
 var display, input, frames, spFrame, lvFrame;
 var alSprite, taSprite, ciSprite;
 var aliens, dir, tank, bullets, cities;
+var running = false;
+
 
 /* Main functions */
 function main() {
     // create game canvas and inputhandler
-    display = new Display(502, 600); // value:30
+    if (!display) display = new Display(502, 600); // value:30
     input = new InputHandler();
 
     // create all sprites from asset image
@@ -119,8 +121,13 @@ function init() {
 /* Wrapper around the game loop function, updates and renders the game */
 function run() {
     var loop = function(){
-        update();
-        render();
+        
+        if (!running) {
+            return;
+        }
+
+            update();
+            render();
 
         window.requestAnimationFrame(loop, display.canvas);
     };
@@ -145,6 +152,11 @@ function update() {
     // create new bullet when spacebar is pressed
     if (input.isPressed(32)) { //spacebar
         bullets.push(new Bullet(tank.x + 10 , tank.y, -8, 2, 6, "#fff"));
+    }
+
+    if (input.isPressed(78)) { //Key n for new game
+        running = false;
+        startscreen();
     }
 
     // godmode
@@ -275,5 +287,13 @@ function render() {
     display.drawSprite(tank.sprite, tank.x, tank.y);
 };
 
-/* Start and run the game */
-main();
+function startGame() {
+    hideMenuControl();
+    running = true;
+    main();
+};
+
+function endGame() {
+    hideGameControl();
+    running = false;
+}

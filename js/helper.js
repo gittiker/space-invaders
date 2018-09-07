@@ -30,7 +30,9 @@ function Display(width, height) {
     this.ctx = this.canvas.getContext("2d");  
 
     // append canvas to body of document
-    document.body.appendChild(this.canvas);
+    var tmpdiv = document.getElementById("keks");
+
+    tmpdiv.appendChild(this.canvas);
 };
 
 Display.prototype.drawSprite = function(sp, x, y) {
