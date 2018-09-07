@@ -125,6 +125,9 @@ function update() {
     if (input.isDown(39)) { //Right
         tank.x += 4;
     }
+    if (input.isPressed(78)) { //Key n for new game
+        buildStartScreen();
+    }
     // Kepp tank in canvas with 30 px distance to borders
     tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
     
@@ -254,4 +257,5 @@ function render() {
     // draw tank sprite
     display.drawSprite(tank.sprite, tank.x, tank.y);
 };
+//window.location.href='mainMenu.html'
 main();

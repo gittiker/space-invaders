@@ -59,6 +59,7 @@ function InputHandler() {
     //capture key presses 
     document.addEventListener("keydown", function(evt) {
         _this.down[evt.keyCode] = true;
+        this.getElementById("test").style="display:none"
     });
     document.addEventListener("keyup", function (evt) {
         delete _this.down[evt.keyCode];
