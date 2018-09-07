@@ -3,10 +3,12 @@ canvas {
     display: block;
     position: absolute;
     margin: auto;
-    top: 0;
+    /* top: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 0; */
+    border-style: solid;
+    border-color: green;
 }
 
 .center {
@@ -19,15 +21,19 @@ canvas {
 #menuItem.hidden {
     display: none;
 }
+#menuItem {
+    display: block;
+    background: white;
+    position: absolute;
+    margin: auto;
+    margin-bottom: 0;
+    top: 0;
+}
+
 
 #gameItem.hidden {
     display: none;
 }
-
-#menuItem {
-    display: block;
-}
-
 #gameItem {
     display: block;
 }

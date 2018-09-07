@@ -150,7 +150,7 @@ function update() {
     tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
 
     // create new bullet when spacebar is pressed
-    if (input.isPressed(32)) { //spacebar
+    if (input.isPressed(83)) { // 's' 83 // spacebar 32
         bullets.push(new Bullet(tank.x + 10 , tank.y, -8, 2, 6, "#fff"));
     }
 
@@ -290,6 +290,7 @@ function render() {
 function startGame() {
     hideMenuControl();
     running = true;
+    document.getElementById("canvasContainer").focus();
     main();
 };
 

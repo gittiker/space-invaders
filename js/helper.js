@@ -30,8 +30,7 @@ function Display(width, height) {
     this.ctx = this.canvas.getContext("2d");  
 
     // append canvas to body of document
-    var tmpdiv = document.getElementById("keks");
-
+    var tmpdiv = document.getElementById("canvasContainer");
     tmpdiv.appendChild(this.canvas);
 };
 
