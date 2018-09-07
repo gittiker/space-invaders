@@ -27,8 +27,8 @@ Tested with
 ## Known-Bugs
 
 * Google Chrome Browser is not able to display the game properly. The game will suspend until the page is being reloaded.
-* After the game has been started, pressing the spacebar will increase the speed of the game.
-* If 'n' is pressed during the bug described above, the game restarts at the speed set by the bug.
+~~* After the game has been started, pressing the spacebar will increase the speed of the game.
+* If 'n' is pressed during the bug described above, the game restarts at the speed set by the bug.~~ (fixed: Spacebar-Input will be ignored)
 
 ## Versioning
 
