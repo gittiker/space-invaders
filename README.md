@@ -18,9 +18,14 @@ You need a browser of the following list to be installed:
 Due to technical difficulties with activating and installing Internet Explorer in Windows 10, this project could not be tested with said browser.
 
 Tested with 
-* Google Chrome v69
 * Microsoft Edge
+* Mozilla Firefox
 
+
+## Known-Bugs
+
+* Google Chrome Browser is not able to display the game properly. The game will suspend until the page is being reloaded.
+* After starting the game pressing the spacebar will result in restarting the game over and over again. You'll notice aliens and tanks speed increasing significantly.
 
 ## Versioning
 
