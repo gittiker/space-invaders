@@ -9,9 +9,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 You need a browser of the following list to be installed:
-* Google Chrome v69
+* Mozilla Firefox
 * Microsoft Edge
-
+* Internet Destroyer
 
 ## Compatability
 
