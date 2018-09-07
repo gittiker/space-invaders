@@ -13,6 +13,8 @@ You need a browser of the following list to be installed:
 * Microsoft Edge
 * Internet Destroyer
 
+Download the project as a .zip file and launch index.html in a supported browser.
+
 ## Compatability
 
 Due to technical difficulties with activating and installing Internet Explorer in Windows 10, this project could not be tested with said browser.
