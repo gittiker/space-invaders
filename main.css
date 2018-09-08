@@ -30,24 +30,37 @@ canvas {
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
+    /* background-color: #000;
+    border: #4CAF50;
+    border-style: solid;
+    color: #4CAF50;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 200px; */
+
+    /* SOLID GREEN STYLE: */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 15px 32px;
-
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     width: 200px;
+    margin-top: 665px;
+    margin-left: 545px;
 }
 
-.info {
+.title {
     color: white;
     display: inline-block;
     width: 100%;
     text-align: center;
     font-family: 'invaders';
     font-size: 100px;
-    margin-top: 0;
+    margin-top: 30px;
 }
