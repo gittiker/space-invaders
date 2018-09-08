@@ -1,39 +1,71 @@
+body {
+    background-image: url("./res/jake-weirick-581398-unsplash.jpg");
+    background-color: #000;
+    background-size: cover;
+}
+
 canvas {
     background: #000;
     display: block;
-    position: absolute;
-    margin: auto;
-    /* top: 0;
+    position: fixed;
     bottom: 0;
     left: 0;
-    right: 0; */
+    right: 0;
+    margin: auto;
     border-style: solid;
     border-color: green;
 }
 
-.center {
-    margin: auto;
-    /* width: 50%; */
-    border: 3px solid green;
-    /* padding: 10px; */
+.wrapper {
+    /** Top padding so that initially, the content is below the header **/
+    padding-top: 100px;
 }
 
-#menuItem.hidden {
-    display: none;
-}
-#menuItem {
-    display: block;
-    background: white;
-    position: absolute;
-    margin: auto;
-    margin-bottom: 0;
+.header {
+    height: 100px;
+    width: 400px; /** Use 100% to fill the width of the page **/
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-color: rgba(0,0,255,0.2);
 }
 
+.banner {
+    display: block;
+    margin: 0 auto;
+} 
 
-#gameItem.hidden {
+#buttonStart.hidden {
     display: none;
 }
-#gameItem {
+#buttonStart {
+
+}
+
+#buttonEnd.hidden {
+    display: none;
+}
+#buttonEnd {
+
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.caption {
     display: block;
+    margin: 0 auto;
+    position: absolute;
+    font-family: 'invaders';
+    color: white;
 }

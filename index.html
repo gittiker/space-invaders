@@ -11,19 +11,19 @@
     <script src="js/menu.js"></script>
 </head>
 <body>
-       
-    <!-- <div id="menuItem" class=""> -->
-        <button id="menuItem" onclick="startGame()" class="">Starten</button>
-    <!-- </div> -->
-    
-    <!-- <div id="gameItem" class="row"> -->
-        <button id ="gameItem" onclick="endGame()">Beenden</button>
-    <!-- </div> -->
+    <div class="wrapper">
+        <div class="header banner">
+            Space Invaders
+        </div>
 
-    <div id="canvasContainer" class="row">
+        <div class="content">
+            <button id="buttonStart" onclick="startGame()" class="button">Starten</button>    
+            <button id ="buttonEnd" onclick="endGame()" class="hidden">Beenden</button>
+
+            <div id="canvasContainer" class="row"></div>
+        </div>
+
+        <script src="js/main.js"></script>
     </div>
-
-    <script src="js/main.js"></script>
-
 </body>
 </html>
