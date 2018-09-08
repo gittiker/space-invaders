@@ -155,8 +155,7 @@ function update() {
     }
 
     if (input.isPressed(78)) { //Key n for new game
-        running = false;
-        startscreen();
+        endGame();
     }
 
     // godmode
@@ -290,7 +289,6 @@ function render() {
 function startGame() {
     hideMenuControl();
     running = true;
-    document.getElementById("canvasContainer").focus();
     main();
 };
 

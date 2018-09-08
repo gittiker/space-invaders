@@ -1,3 +1,8 @@
+@font-face{
+    font-family: invaders;
+    src: url('./res/INVADERS.TTF');
+}
+
 body {
     background-image: url("./res/jake-weirick-581398-unsplash.jpg");
     background-color: #000;
@@ -16,39 +21,12 @@ canvas {
     border-color: green;
 }
 
-.wrapper {
-    /** Top padding so that initially, the content is below the header **/
-    padding-top: 100px;
-}
-
-.header {
-    height: 100px;
-    width: 400px; /** Use 100% to fill the width of the page **/
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    background-color: rgba(0,0,255,0.2);
-}
-
-.banner {
-    display: block;
-    margin: 0 auto;
-} 
-
 #buttonStart.hidden {
     display: none;
-}
-#buttonStart {
-
 }
 
 #buttonEnd.hidden {
     display: none;
-}
-#buttonEnd {
-
 }
 
 .button {
@@ -56,16 +34,20 @@ canvas {
     border: none;
     color: white;
     padding: 15px 32px;
+
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    width: 200px;
 }
 
-.caption {
-    display: block;
-    margin: 0 auto;
-    position: absolute;
-    font-family: 'invaders';
+.info {
     color: white;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: 'invaders';
+    font-size: 100px;
+    margin-top: 0;
 }
