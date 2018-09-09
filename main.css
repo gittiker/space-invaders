@@ -33,16 +33,12 @@ canvas {
     display: none;
 }
 
-#livesContainer {
+#statusBar {
     margin-left: 34%;
     margin-top: 2%;
-    color: rgb(60, 206, 65);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    font-weight: bold;
 }
-#livesContaiener.hidden {
-    display: none
+#statusBar.hidden {
+    display: none;
 }
 
 .lives {
@@ -53,6 +49,25 @@ canvas {
 }
 .lives.hidden {
     display: none;
+}
+#livesContainer {
+    color: rgb(60, 206, 65);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+#livesContaiener.hidden {
+    display: none
+}
+
+.score {
+    display: inline-block;
+    color: rgb(60, 206, 65);
+    font-weight: bold;
+    font-size: 20;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 21%
 }
 
 .button {

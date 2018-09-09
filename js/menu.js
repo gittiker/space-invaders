@@ -4,11 +4,13 @@ function startscreen() {
 }
 
 function hideMenuControl() {
+    document.getElementById("statusBar").className = "";
     document.getElementById("buttonStart").className= "hidden";
     document.getElementById("buttonEnd").className= "button";
 }
 
 function hideGameControl() {
+    // document.getElementById("statusBar").classname = "hidden";
     document.getElementById("buttonEnd").className= "hidden";
     document.getElementById("buttonStart").className= "button";
 }
