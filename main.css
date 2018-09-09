@@ -25,20 +25,12 @@ canvas {
     border-color: green;
 }
 
-#buttonStart.hidden {
+.hidden {
     display: none;
 }
-
-#buttonEnd.hidden {
-    display: none;
-}
-
 #statusBar {
     margin-left: 34%;
     margin-top: 2%;
-}
-#statusBar.hidden {
-    display: none;
 }
 
 .lives {
@@ -47,18 +39,12 @@ canvas {
     height: 16px;
     background: url(./res/invaders.png) 58px 0px;
 }
-.lives.hidden {
-    display: none;
-}
 #livesContainer {
     color: rgb(60, 206, 65);
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     font-weight: bold;
     display: inline-block;
-}
-#livesContaiener.hidden {
-    display: none
 }
 
 .score {
@@ -107,16 +93,20 @@ canvas {
     margin-top: 1%;
 }
 
-.endScreen {
-    background: rgba(0, 0, 0, 0.418);
-    display: block;
+/* #endScreen {
+    display: inline-block;
     position: absolute;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    margin-top: 180px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    z-index: 1;
-}
+    width: 200px;
+    height: 300px;
+    margin: auto;
+    background-color: #f71c1c;
+
+    color: white;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+} */
