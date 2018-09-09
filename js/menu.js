@@ -7,12 +7,13 @@ function hideMenuControl() {
     document.getElementById("statusBar").className = "";
     document.getElementById("buttonStart").className= "hidden";
     document.getElementById("buttonEnd").className= "button";
+    document.getElementById("endscreen").className= "";
 }
 
 function hideGameControl() {
-    // document.getElementById("statusBar").classname = "hidden";
     document.getElementById("buttonEnd").className= "hidden";
     document.getElementById("buttonStart").className= "button";
+    document.getElementById("endscreen").className= "hidden";
 }
 
 function disableSpacebar() {
