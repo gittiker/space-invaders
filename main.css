@@ -12,11 +12,15 @@ body {
 canvas {
     background: #000;
     display: block;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    margin: auto;
+    /* margin: auto; */
+    margin-top: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
     border-style: solid;
     border-color: green;
 }
@@ -29,19 +33,29 @@ canvas {
     display: none;
 }
 
-.button {
-    /* background-color: #000;
-    border: #4CAF50;
-    border-style: solid;
-    color: #4CAF50;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 200px; */
+#livesContainer {
+    margin-left: 34%;
+    margin-top: 2%;
+    color: rgb(60, 206, 65);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+}
+#livesContaiener.hidden {
+    display: none
+}
 
-    /* SOLID GREEN STYLE: */
+.lives {
+    display: inline-block;
+    width: 22px;
+    height: 16px;
+    background: url(./res/invaders.png) 58px 0px;
+}
+.lives.hidden {
+    display: none;
+}
+
+.button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -51,8 +65,12 @@ canvas {
     display: inline-block;
     font-size: 16px;
     width: 200px;
-    margin-top: 35%;
-    margin-left: 45%; 
+    margin-top: 41%;
+    margin-left: 43%; 
+}
+
+.button:hover {
+    background-color: rgb(46, 107, 48);
 }
 
 .title {
@@ -62,5 +80,5 @@ canvas {
     text-align: center;
     font-family: 'invaders';
     font-size: 100px;
-    margin-top: 30px;
+    margin-top: 1%;
 }

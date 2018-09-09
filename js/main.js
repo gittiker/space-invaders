@@ -155,11 +155,11 @@ function update() {
         bullets.push(new Bullet(tank.x + 10 , tank.y, -8, 2, 6, "#fff"));
     }
 
-    if (input.isPressed(78)) { //Key n for new game
-        endGame();
-        frames = 0;
-        startGame();
-    }
+    // if (input.isPressed(78)) { //Key n for new game
+    //     endGame();
+    //     frames = 0;
+    //     startGame();
+    // }
 
     // godmode
     // if (input.isDown(192) || input.isDown(221)) { //find out yourself b*tch
