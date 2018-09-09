@@ -120,14 +120,15 @@ function init() {
 
 /* Wrapper around the game loop function, updates and renders the game */
 function run() {
+
     var loop = function(){
-        
+
         if (!running) {
             return;
         }
 
-            update();
-            render();
+        update();
+        render();
 
         window.requestAnimationFrame(loop, display.canvas);
     };
@@ -149,13 +150,15 @@ function update() {
     // keep tank sprite inside of canvas
     tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
 
-    // create new bullet when spacebar is pressed
+    // create new bullet when 's' is pressed
     if (input.isPressed(83)) { // 's' 83 // spacebar 32
         bullets.push(new Bullet(tank.x + 10 , tank.y, -8, 2, 6, "#fff"));
     }
 
     if (input.isPressed(78)) { //Key n for new game
         endGame();
+        frames = 0;
+        startGame();
     }
 
     // godmode
@@ -206,15 +209,15 @@ function update() {
                         break;
                     }
                     case 10: {
-                        this.lvFrame = 20;
+                        this.lvFrame = 30;
                         break;
                     }
                     case 5: {
-                        this.lvFrame = 15;
+                        this.lvFrame = 20;
                         break;
                     }
                     case 1: {
-                        this.lvFrame = 6;
+                        this.lvFrame = 10;
                         break;
                     }
                 }
