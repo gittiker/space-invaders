@@ -64,9 +64,10 @@ canvas {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    position: fixed;
     font-size: 16px;
     width: 200px;
-    margin-top: 8%;
+    margin-top: 10%;
     margin-left: 43%; 
 }
 
@@ -93,7 +94,7 @@ canvas {
     margin-top: 1%;
 }
 
-/* #endScreen {
+#endScreen {
     display: inline-block;
     position: absolute;
     top: 0;
@@ -104,9 +105,14 @@ canvas {
     height: 300px;
     margin: auto;
     background-color: #f71c1c;
+z-index: 1;
 
     color: white;
     font-size: 50px;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-} */
+}
+
+#endScreen.hidden {
+    display: none;
+}
