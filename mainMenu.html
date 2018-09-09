@@ -4,10 +4,26 @@
     <meta charset="utf-8" />
     <title>Space Invaders</title>
     <script src="js/helper.js"></script>
+
+    <style>
+        canvas {
+            background-color: #000;
+            display: block;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
 </head>
 <body>
-    <button onclick="window.location.href='index.html'">start</button>
-    <button>setting</button>
+    <div id="buttons">
+        <button onclick="window.location.href='index.html'">start</button>
+        <button>settings</button>
+    </div>
+    
     <script src="js/mainMenu.js"></script>
 </body>
 </html>

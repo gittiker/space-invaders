@@ -1,7 +1,19 @@
 var display, input, frames, spFrame, lvFrame;
 var alSprite, taSprite, ciSprite;
 var aliens, dir, tank, bullets, cities;
+var isRunning = false;
+var pointCounter, lifeCounter;
 
+function startGame() {
+    isRunning = true;
+    hideMenuControl();
+    main();
+};
+
+function endGame() {
+    isRunning = false;
+    hideGameControl();
+};
 // main function
 function main() {
     // create game canvas and inputhandler
@@ -11,9 +23,9 @@ function main() {
     var img = new Image();
     img.addEventListener("load", function() {
         alSprite = [
-            [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)],
-            [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
-            [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)]
+            [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)], // blue alien
+            [new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)], // pink alien
+            [new Sprite(this, 38, 0, 24, 16), new Sprite(this, 38, 16, 24, 16)] // green alien
         ];
         taSprite = new Sprite(this, 62, 0, 22, 16);
         ciSprite = new Sprite(this, 84, 8, 36, 24);
@@ -27,15 +39,19 @@ function main() {
 function init() {
     frames = 0;
     spFrame = 0; 
-    // lvl difficultly
+    // lvl difficultly insertable
     lvFrame = 60;
     dir = 1;
+    pointCounter = 0;
+    lifeCounter = 3;
 
     // Create tank object
     tank = {
         sprite: taSprite,
         x: (display.width - taSprite.w) / 2,
-        y: display.height - (30 + taSprite.h)
+        y: display.height - (30 + taSprite.h),
+        w: taSprite.w,
+        h: taSprite.h
     };
 
     bullets = [];
@@ -108,6 +124,9 @@ function init() {
 // run the game
 function run() {
     var loop = function() {
+        if (!isRunning) {
+            return;
+        }
         update();
         render();
         //loop is the function-object that need to be runned before rendering
@@ -125,14 +144,11 @@ function update() {
     if (input.isDown(39)) { //Right
         tank.x += 4;
     }
-    if (input.isPressed(78)) { //Key n for new game
-        buildStartScreen();
-    }
     // Kepp tank in canvas with 30 px distance to borders
     tank.x = Math.max(Math.min(tank.x, display.width - (30 + taSprite.w)), 30);
     
     // Shoot when is down
-    if (input.isPressed(32)) {
+    if (input.isPressed(83)) {
         bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
     }
     // Easter Egg minigun --> add music
@@ -146,14 +162,16 @@ function update() {
 
         b.update();
         
-        //remove bullet logic
+        // remove bullet if its leave the canvas
         if (b.y + b.height < 0 || b.y > screen.height) {
             bullets.splice(i,1);
             i--;
             len--;
             continue;
         }
-
+        
+        // remove bullet if its hits a city
+        // deals dmg to cities
         var h2 = b.height * 0.5;
         if (cities.y < b.y+h2 && b.y+h2 < cities.y + cities.h) {
             if (cities.hits(b.x, b.y+h2)) {
@@ -164,6 +182,7 @@ function update() {
             }
         }
 
+        // loop to check bullethits on aliens
         for (var j = 0, len2 = aliens.length; j < len2; j++) {
             var a = aliens[j];
             if (AABBIntersect(b.x, b.y, b.width, b.height, a.x, a.y, a.w, a.h)) {
@@ -173,7 +192,18 @@ function update() {
                 bullets.splice(i, 1);
                 i--;
                 len--;
+                
+                // generate points when aliens got hitted
+                if (a.sprite == alSprite[0]) { // blue alien
+                    pointCounter += 20;
+                } else if (a.sprite == alSprite[1]) { // pink alien
+                    pointCounter += 30; 
+                } else if (a.sprite == alSprite[2]) { // green alien
+                    pointCounter += 10;
+                }
+                UpdatePoints(pointCounter);
 
+                // when aliens disapear the others get faster
                 switch (len2) {
                     case 30: {
                         this.lvFrame = 40;
@@ -194,14 +224,26 @@ function update() {
                 }
             }
         }
+        // loop to check hits on tank
+        // b == bullets
+        // t = tank
+        if (AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, tank.w, tank.h)) {
+            lifeCounter--;
+            UpdateLifes(lifeCounter);
+            bullets.splice(i, 1);
+            i--;
+            len--;
+        }
     }
+
     // random returns number between 0 and 1
     // difficultly
+    // aliens shoot logic
     if (Math.random() < 0.03 && aliens.length > 0) {
         var a = aliens[Math.round(Math.random() * (aliens.length - 1))];
         for (var i = 0, len = aliens.length; i < len; i++) {
             var b = aliens[i];
-            
+            //select lower position alien to shoot, no friendly fire
             if (AABBIntersect(a.x, a.y, a.w, 100, b.x, b.y, b.w, b.h)) {
                 a = b;
             }
@@ -258,4 +300,4 @@ function render() {
     display.drawSprite(tank.sprite, tank.x, tank.y);
 };
 //window.location.href='mainMenu.html'
-main();
+

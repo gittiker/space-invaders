@@ -12,6 +12,7 @@ function Bullet(x, y, vely, w, h, color) {
     this.color = color;
 };
 
+// Update Bullet position
 Bullet.prototype.update = function() {
     this.y += this.vely;
 };
@@ -59,7 +60,6 @@ function InputHandler() {
     //capture key presses 
     document.addEventListener("keydown", function(evt) {
         _this.down[evt.keyCode] = true;
-        this.getElementById("test").style="display:none"
     });
     document.addEventListener("keyup", function (evt) {
         delete _this.down[evt.keyCode];
@@ -78,4 +78,12 @@ InputHandler.prototype.isPressed = function(code) {
         return this.pressed[code] = true;
     }
     return false;
+};
+
+function UpdatePoints(points) {
+    document.getElementById("punkte").textContent = points;
+};
+
+function UpdateLifes(lifes) {
+    document.getElementById("leben").textContent = lifes;
 };

@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <title>Space Invaders</title>
     <script src="js/helper.js"></script>
+    <script src="js/mainMenu.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
     
-
     <style>
     canvas {
         background-color: #000;
@@ -20,7 +21,18 @@
     </style>
 </head>
 <body>
-    <!-- <div id="test" >Hallo</div>  -->
+    <div id="start">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+    <div id="ende">
+        <button onclick="endGame()">End Game</button>
+    </div>
+    <div id="punkte">
+        punkte:
+    </div>
+    <div id="leben">
+        leben:
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>

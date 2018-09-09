@@ -1,9 +1,11 @@
-// Test Start Screen
-function buildStartScreen() {
-    display = new Display(502, 600);
-    input = new InputHandler();
-    if (input.isPressed(78)) { //Key n for new game
-        main();
-    }
+function hideMenuControl() {
+    //document.getElementById("ende").style.visibility = 'visible';
+    //document.getElementById("start").style.visibility = 'hidden';
+    document.getElementById("start").disabled ="true"
 };
-buildStartScreen();
+
+function hideGameControl () {
+    //document.getElementById("ende").style.visibility = 'hidden';
+    //document.getElementById("start").style.visibility = 'visible';
+    document.getElementById("start").disabled ="false"
+};
