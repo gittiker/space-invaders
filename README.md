@@ -57,7 +57,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for details.
+This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
 
 ## Acknowledgments and Used Contents
 
