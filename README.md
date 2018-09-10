@@ -2,6 +2,8 @@
 
 A HTML, CSS, JS Application
 
+Version: 1.0
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -25,12 +27,22 @@ Tested with
 Optimized for: 
 * Mozilla Firefox
 
+## Control
+
+* Toggle between difficulties by pressing the button 'easy'.
+* Start the game by pressing "Starten".
+
+* Left and right arrow keys to navigate the tank.
+* 's' binds to shooting.
+* Easteregg railgun cheat on special key.
+
+* Mute audio by clicking the speaker icon
 
 ## Known-Bugs
 
 * Google Chrome Browser and Opera Browser are not able to display the game properly. The game will suspend until the page is being reloaded.
 * Changing the window while the game is running fullscreen makes the game feel laggy.
-* Aliens shoot themse
+* Aliens shoot themselfes while moving.
 
 ## Versioning
 
@@ -45,7 +57,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see below for details.
+This project is licensed under the MIT License - see [LICENSE.md](LICENSE.md) for details.
 
 ## Acknowledgments and Used Contents
 
@@ -56,11 +68,3 @@ This project is licensed under the MIT License - see below for details.
 * Code Inspiration: https://github.com/dwmkerr/spaceinvaders/blob/master/index.html
 * Code Inspiration: https://github.com/maxwihlborg/youtube-tutorials/tree/master/space-invaders
 * Sound Files: https://github.com/leerob/Space_Invaders/
-
-# License
-Copyright (c) 2018 D. Rappenhoener, M. Faulhaber
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
