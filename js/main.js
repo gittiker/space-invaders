@@ -1,19 +1,9 @@
 var display, input, frames, spFrame, lvFrame;
-var alSprite, taSprite, ciSprite;
-var aliens, dir, tank, bullets, cities;
+var alSprite, taSprite, ciSprite, exSprite;
+var aliens, dir, tank, bullets, cities, lifeTank_1, lifeTank_2, lifeTank_3;
 var isRunning = false;
 var pointCounter, lifeCounter;
 
-function startGame() {
-    isRunning = true;
-    hideMenuControl();
-    main();
-};
-
-function endGame() {
-    isRunning = false;
-    hideGameControl();
-};
 // main function
 function main() {
     // create game canvas and inputhandler
@@ -21,6 +11,7 @@ function main() {
     input = new InputHandler();
 
     var img = new Image();
+    var imgExplosion = new Image();
     img.addEventListener("load", function() {
         alSprite = [
             [new Sprite(this, 0, 0, 22, 16), new Sprite(this, 0, 16, 22, 16)], // blue alien
@@ -29,11 +20,15 @@ function main() {
         ];
         taSprite = new Sprite(this, 62, 0, 22, 16);
         ciSprite = new Sprite(this, 84, 8, 36, 24);
-    
+        // explosion png
+        imgExplosion.addEventListener("load", function() {
+            exSprite = new Sprite (imgExplosion, 0, 0, 100, 100)
+        });
         init();
         run();
     });
     img.src = "res/invaders.png";
+    imgExplosion.src = "res/explode-1.png";
 };
 // initializing values and playground
 function init() {
@@ -43,7 +38,9 @@ function init() {
     lvFrame = 60;
     dir = 1;
     pointCounter = 0;
+    UpdatePoints(pointCounter);
     lifeCounter = 3;
+    UpdateLifes(lifeCounter);
 
     // Create tank object
     tank = {
@@ -222,6 +219,11 @@ function update() {
                         break;
                     }
                 }
+            }
+            
+            // when aliens reachs cities game over
+            if (a.y >= tank.y + ciSprite.h + 30) {
+                GameOver();
             }
         }
         // loop to check hits on tank

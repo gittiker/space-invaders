@@ -86,4 +86,27 @@ function UpdatePoints(points) {
 
 function UpdateLifes(lifes) {
     document.getElementById("leben").textContent = lifes;
+    if (lifes == 0) {
+        GameOver();
+    }
 };
+
+function GameOver() {
+    isRunning = false;
+};
+
+function WinGame() {
+
+};
+function StartGame() {
+    isRunning = true;
+    hideMenuControl();
+    main();
+};
+
+function EndGame() {
+    isRunning = false;
+    hideGameControl();
+};
+
+function 
