@@ -103,6 +103,7 @@ function WinGame() {
 function StartGame() {
     isRunning = true;
     hideMenuControl();
+    PlaySound("startSound");
     main();
 };
 

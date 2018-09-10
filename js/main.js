@@ -148,6 +148,7 @@ function update() {
     // Shoot when is down
     if (input.isPressed(83)) {
         bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+        PlaySound("tankShoot");
     }
     // Easter Egg minigun --> add music
     if (input.isDown(192)) {
@@ -199,6 +200,7 @@ function update() {
                 bullets.splice(i, 1);
                 i--;
                 len--;
+                PlaySound("alienKill");
                 
                 // generate points when aliens got hitted
                 if (a.sprite == alSprite[0]) { // blue alien
@@ -240,6 +242,7 @@ function update() {
             bullets.splice(i, 1);
             i--;
             len--;
+            PlaySound("tankHit");
             continue;
         }
     }
@@ -257,6 +260,7 @@ function update() {
             }
         }
         bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4, 2, 4, "#fff"));
+        PlaySound("alienShoot");
     }
 
     // Update at the current movement currency
