@@ -53,6 +53,7 @@ This project is licensed under the MIT License - see below for details.
 * Mute Button PNGs: www.iconsdb.com
 * Sprite Template: https://github.com/maxwihlborg/youtube-tutorials/blob/master/space-invaders/res/invaders.png
 * Code Inspiration: https://github.com/dwmkerr/spaceinvaders/blob/master/index.html
+* Code Inspiration: https://github.com/maxwihlborg/youtube-tutorials/tree/master/space-invaders
 * Sound Files: https://github.com/leerob/Space_Invaders/
 
 # License

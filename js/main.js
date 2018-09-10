@@ -181,7 +181,7 @@ function update() {
         for (var j = 0, len2 = aliens.length; j < len2; j++) {
             var a = aliens[j];
             if (a.y >= tank.y - 54) {
-                GameOver();
+                EndGame(false);
                 continue;
             }
         }
@@ -252,7 +252,7 @@ function update() {
 
         // If all Aliens died the game ends
         if (aliens.length == 0) {
-            endGame(true);
+            EndGame(true);
         }
 
         // loop to check hits on tank

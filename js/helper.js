@@ -98,7 +98,7 @@ function UpdateLifes(lifes) {
     
     lifes++;
     if (lifes == 0) {
-        endGame(false);
+        EndGame(false);
     }
     document.getElementById("l"+lifes).className = 'hidden';
 };
@@ -111,7 +111,7 @@ function startGame() {
     main();
 };
 
-function endGame(gamewon) {
+function EndGame(gamewon) {
     running = false;
     if (gamewon) {
         document.getElementById('endScreen').innerHTML = '<p>You</p><p>won!</p>';
