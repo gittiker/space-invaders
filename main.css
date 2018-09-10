@@ -54,7 +54,7 @@ canvas {
     float: right;
     display: inline-block;
     width: 20%;
-    min-width: 300px;
+    /* min-width: 300px; */
 }
 .button {
     background-color: #4CAF50;
@@ -91,7 +91,7 @@ canvas {
 #gameContainer {
     display: inline-block;
     width: 60%;
-    min-width: 600px;
+    /* min-width: 600px; */
 }
 #statusBar {
     position: relative;
@@ -129,7 +129,7 @@ canvas {
     color: white;
     font-family: 'Courier New', Courier, monospace;
     width: 20%;
-    min-width: 300px;
+    /* min-width: 300px; */
     padding-top: 50px;
 }
 
