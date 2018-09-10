@@ -30,6 +30,7 @@ Optimized for:
 
 * Google Chrome Browser and Opera Browser are not able to display the game properly. The game will suspend until the page is being reloaded.
 * Changing the window while the game is running fullscreen makes the game feel laggy.
+* Aliens shoot themse
 
 ## Versioning
 
