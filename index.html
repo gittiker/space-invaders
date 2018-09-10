@@ -9,21 +9,15 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="js/helper.js"></script>
     <script src="js/menu.js"></script>
+
 </head>
 <body>
-    <div class="wrapper">
-
+    <div id="header">    
         <div class="title">.</div>
-        
-        <div id="statusBar" class="hidden">
-            <div id="livesContainer">Lives:
-                <div id="l1" class="lives"></div>
-                <div id="l2" class="lives"></div>
-                <div id="l3" class="lives"></div>
-            </div>
-            <div id="score" class="score">Points: 30</div>
-        </div>
+    </div>
 
+    <div id="middle">
+                
         <div id="userguide" class="userguide">
             <h2>Space Invaders</h2>
             <p>Schiesse alle Aliens ab,<br>
@@ -31,29 +25,45 @@
             <p>Wenn alle Leben weg sind,<br>
             ist das Spiel verloren</p>
             <h2>Steuerung</h2>
-            <p>Mit Pfeiltaste rechts und Pfeiltaste links<br>
+            <p>Mit den Pfeiltasten rechts und links<br>
             wird der Panzer gesteuert.</p>
             <p>Mit der Taste 's' wird geschossen.</p>
             <h2>Punkte</h2>
             <p>Grüne Aliens geben 10 Punkte.</p>
             <p>Blaue Aliens geben 20 Punkte.</p>
-            <p>Rosa Aliens geben 40 Punkte.</p>
+            <p>Rosa Aliens geben 30 Punkte.</p>
         </div>
 
-        <div id="endScreen" class="hidden">
-            <p>Game</p>
-            <p>Over</p>
+        <div id="gameContainer" class="">
+            <div id="statusBar" class="hidden"> 
+                <div id="livesContainer">Lives:
+                    <div id="l1" class="lives"></div>
+                    <div id="l2" class="lives"></div>
+                    <div id="l3" class="lives"></div>
+                </div>
+                <div id="score" class="score">Points: 0</div>
+            </div>
+
+            <div id="canvasContainer">
+                <div id="endScreen" class="hidden">
+                        <p>Game</p><p>Over</p>
+                    </div>
+            </div>
+            
         </div>
 
-        <div class="buttonWrapper">
-            <button id ="buttonStart" onclick="startGame()" class="button">Starten</button>
-            <button id ="buttonEnd" onclick="endGame()" class="hidden">Beenden</button>
+        <div class="buttonContainer">
+            <button id ="buttonStart"   onclick="startGame()"   class="button">Starten</button>
+            <button id ="buttonEnd"     onclick="endGame()"     class="hidden">Beenden</button>
+            <p/><button id ="muteAudio"     onclick="muteAudio()"   class="muteButton sound"></button>
         </div>
-        
-        <div id="canvasContainer" class=""></div>
-
-        <script src="js/main.js"></script>
-
     </div>
+
+    <div id="footer">
+        <a target="_blank" rel="noopener noreferrer" href="./impressum.html">Impressum</a>
+        <a target="_blank" rel="noopener noreferrer" href="./datenschutz.html">Datenschutz</a>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

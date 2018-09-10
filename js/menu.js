@@ -16,6 +16,19 @@ function hideGameControl() {
     document.getElementById("endScreen").className= "";
 }
 
+function muteAudio() {
+    switch (document.getElementById("muteAudio").className) {
+        case ("muteButton mute"): 
+            document.getElementById("muteAudio").className = "muteButton sound";
+            break;
+
+        case ("muteButton sound"): 
+            document.getElementById("muteAudio").className = "muteButton mute";
+            break;
+    } 
+    
+}
+
 function disableSpacebar() {
     window.addEventListener('keydown', function(event) {  
         if (event.which === 32) {

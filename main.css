@@ -8,54 +8,54 @@ body {
     background-color: #000;
     background-size: cover;
 }
+#header {
+    height: 120px;
+    display: block;
+}
+#middle {
+    display: block;
+    padding: 20px 0px 0px 0px;
+    height: 650px;
+}
+#footer {
+    display: block;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    color: white;
+}
 
+#canvasContainer{
+    position: relative;
+}
 canvas {
     background: #000;
     display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /* margin: auto; */
-    margin-top: 180px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
+    position: relative;
     border-style: solid;
     border-color: green;
+
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.hidden {
-    display: none;
-}
-#statusBar {
-    margin-left: 34%;
-    margin-top: 2%;
+.title {
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-family: 'invaders';
+    font-size: 100px;
 }
 
-.lives {
+.buttonContainer {
+    margin-top: 60px;
+    float: right;
     display: inline-block;
-    width: 22px;
-    height: 16px;
-    background: url(./res/invaders.png) 58px 0px;
+    width: 20%;
+    min-width: 300px;
 }
-#livesContainer {
-    color: rgb(60, 206, 65);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    font-weight: bold;
-    display: inline-block;
-}
-
-.score {
-    display: inline-block;
-    color: rgb(60, 206, 65);
-    font-weight: bold;
-    font-size: 20;
-    font-family: 'Courier New', Courier, monospace;
-    margin-left: 21%
-}
-
 .button {
     background-color: #4CAF50;
     border: none;
@@ -63,57 +63,96 @@ canvas {
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    position: fixed;
     font-size: 16px;
-    width: 200px;
-    margin-top: 10%;
-    margin-left: 43%; 
+    width: 150px;
 }
-
-.userguide {
-    margin: auto;
-    color: white;
-    margin-left: 20px;
-    margin-top: 0;
-    font-family: 'Courier New', Courier, monospace;
-    z-index: -1;
-}
-
 .button:hover {
     background-color: rgb(46, 107, 48);
 }
 
-.title {
-    color: white;
+#muteAudio {
+    border: none;
+    background: transparent;
+    padding: 15px 32px;
+    display: block;
+    font-size: 16px;
+    width: 64px;
+    height: 64px;
+    margin-left: 40px;
+}
+#muteAudio.mute {
+    background-image: url(./res/mute-2-64.png);
+}
+#muteAudio.sound {
+    background-image: url(./res/volume-up-4-64.png);
+} 
+
+#gameContainer {
     display: inline-block;
-    width: 100%;
+    width: 60%;
+    min-width: 600px;
     text-align: center;
-    font-family: 'invaders';
-    font-size: 100px;
-    margin-top: 1%;
+}
+#statusBar {
+    text-align: center;
+}
+#livesContainer {
+    color: rgb(60, 206, 65);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    padding-right: 170px;
+}
+.lives {
+    display: inline-block;
+    width: 22px;
+    height: 16px;
+    background: url(./res/invaders.png) 58px 0px;
+}
+.score {
+    display: inline-block;
+    color: rgb(60, 206, 65);
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.userguide {
+    float: left;
+    display: inline-block;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    width: 20%;
+    min-width: 300px;
+    padding-top: 50px;
+}
+
+.hidden {
+    display: none;
 }
 
 #endScreen {
-    display: inline-block;
+    display: block;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     width: 200px;
-    height: 300px;
-    margin: auto;
-    background-color: #f71c1c;
-z-index: 1;
+    height: 260px;
+    background-color: #f71c1ccb;
 
+    left: 50%;
+    top: 50%;
+    margin: -130px -100px;
+
+    z-index: 1;
     color: white;
     font-size: 50px;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
 }
-
 #endScreen.hidden {
-    /* display: none; */
-    opacity: 0;
+    display: none;
+}
+
+a {
+    color: white;
 }
