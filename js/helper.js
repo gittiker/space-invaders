@@ -116,6 +116,7 @@ function EndGame(gamewon) {
     if (gamewon) {
         document.getElementById('endScreen').innerHTML = '<p>You</p><p>won!</p>';
         document.getElementById('endScreen').style.backgroundColor = 'rgb(60, 206, 65)';
+        PlaySound("winningSound");
     }
     else {
         document.getElementById('endScreen').innerHTML = '<p>You</p><p>lost!</p>';

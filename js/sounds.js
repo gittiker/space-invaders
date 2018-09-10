@@ -4,6 +4,7 @@ var tankHit = new Audio("./sounds/shipexplosion.wav");
 var alienShoot = new Audio("./sounds/shoot.wav");
 var tankShoot = new Audio("./sounds/shoot2.wav");
 var gameOver = new Audio("./sounds/gameOver.wav");
+var winning = new Audio("./sounds/winningSound.wav");
 var soundsVolume = 0.7;
 
 function PlaySound(source) {
@@ -31,6 +32,18 @@ function PlaySound(source) {
         case "tankShoot": {
             tankShoot.volume = soundsVolume;
             tankShoot.play();
+            break;
+        }
+        case "winningSound": {
+            if (soundsVolume > 0) {
+                winning.volume = 1;
+            }
+            else 
+            {
+                winning.volume = 0;
+            }
+            
+            winning.play();
             break;
         }
         case "gameOver": {
