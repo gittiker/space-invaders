@@ -1,3 +1,4 @@
+var bulletSpeed;
 // helper functions
 function AABBIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
     return ax < bx+bw && bx < ax+aw && ay < by+bh && by < ay+ah;
@@ -14,7 +15,7 @@ function Bullet(x, y, vely, w, h, color) {
 
 // Update Bullet position
 Bullet.prototype.update = function() {
-    this.y += this.vely;
+    this.y += this.vely * bulletSpeed;
 };
 
 // Display
@@ -96,8 +97,9 @@ function GameOver() {
 };
 
 function WinGame() {
-
+    isRunning = false;
 };
+
 function StartGame() {
     isRunning = true;
     hideMenuControl();
@@ -109,4 +111,37 @@ function EndGame() {
     hideGameControl();
 };
 
-function 
+function SetDifficulty(setted) {
+    switch (setted) {
+        case "easy": {
+            lvFrame = 60;
+            alShootRatio = 0.03;
+            bulletSpeed = 1;
+            break;
+        }
+        case "normal": {
+            lvFrame = 50;
+            alShootRatio = 0.06;
+            bulletSpeed = 1.5;
+            break;
+        }
+        case "hard": {
+            lvFrame = 40;
+            alShootRatio = 0.10;
+            bulletSpeed = 2.0;
+            break;
+        }
+        case "hardest": {
+            lvFrame = 30;
+            alShootRatio = 0.15;
+            bulletSpeed = 2.5;
+            break;
+        }
+        default: {
+            lvFrame = 60;
+            alShootRatio = 0.03;
+            bulletSpeed = 1;
+            break;
+        }
+    }
+};

@@ -1,4 +1,4 @@
-var display, input, frames, spFrame, lvFrame;
+var display, input, frames, spFrame, lvFrame, alShootRatio;
 var alSprite, taSprite, ciSprite, exSprite;
 var aliens, dir, tank, bullets, cities, lifeTank_1, lifeTank_2, lifeTank_3;
 var isRunning = false;
@@ -35,7 +35,8 @@ function init() {
     frames = 0;
     spFrame = 0; 
     // lvl difficultly insertable
-    lvFrame = 60;
+    //lvFrame = 60;
+    SetDifficulty(document.getElementById("difficultly").textContent);
     dir = 1;
     pointCounter = 0;
     UpdatePoints(pointCounter);
@@ -158,7 +159,16 @@ function update() {
         var b = bullets[i];
 
         b.update();
-        
+
+        // when aliens reachs cities game over
+        for (var j = 0, len2 = aliens.length; j < len2; j++) {
+            var a = aliens[j];
+            if (a.y >= tank.y - 54) {
+                GameOver();
+                continue;
+            }
+        }
+
         // remove bullet if its leave the canvas
         if (b.y + b.height < 0 || b.y > screen.height) {
             bullets.splice(i,1);
@@ -220,11 +230,6 @@ function update() {
                     }
                 }
             }
-            
-            // when aliens reachs cities game over
-            if (a.y >= tank.y + ciSprite.h + 30) {
-                GameOver();
-            }
         }
         // loop to check hits on tank
         // b == bullets
@@ -235,13 +240,14 @@ function update() {
             bullets.splice(i, 1);
             i--;
             len--;
+            continue;
         }
     }
 
     // random returns number between 0 and 1
     // difficultly
     // aliens shoot logic
-    if (Math.random() < 0.03 && aliens.length > 0) {
+    if (Math.random() < alShootRatio && aliens.length > 0) {
         var a = aliens[Math.round(Math.random() * (aliens.length - 1))];
         for (var i = 0, len = aliens.length; i < len; i++) {
             var b = aliens[i];
