@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="js/helper.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/sounds.js"></script>
 
 </head>
 <body>
@@ -53,9 +54,10 @@
         </div>
 
         <div class="buttonContainer">
+            <button id ="difficulty"    onclick="toggleDifficulty()"   class="button">easy</button>
             <button id ="buttonStart"   onclick="startGame()"   class="button">Starten</button>
             <button id ="buttonEnd"     onclick="endGame()"     class="hidden">Beenden</button>
-            <p/><button id ="muteAudio"     onclick="muteAudio()"   class="muteButton sound"></button>
+            <p/><button id ="muteAudio" onclick="muteAudio()"   class="muteButton sound"></button>
         </div>
     </div>
 

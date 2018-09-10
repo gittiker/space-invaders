@@ -65,6 +65,7 @@ canvas {
     text-decoration: none;
     font-size: 16px;
     width: 150px;
+    margin-top: 5px;
 }
 .button:hover {
     background-color: rgb(46, 107, 48);
@@ -91,10 +92,9 @@ canvas {
     display: inline-block;
     width: 60%;
     min-width: 600px;
-    text-align: center;
 }
 #statusBar {
-    text-align: center;
+    position: relative;
 }
 #livesContainer {
     color: rgb(60, 206, 65);
@@ -102,7 +102,9 @@ canvas {
     font-size: 20px;
     font-weight: bold;
     display: inline-block;
-    padding-right: 170px;
+    width: 25%;
+    float: left;
+    margin-left: 200px;
 }
 .lives {
     display: inline-block;
@@ -116,6 +118,9 @@ canvas {
     font-weight: bold;
     font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
+    width: 25%;
+    float: right;
+    margin-right: 120px;
 }
 
 .userguide {
@@ -137,8 +142,7 @@ canvas {
     position: absolute;
     width: 200px;
     height: 260px;
-    background-color: #f71c1ccb;
-
+    background-color: #FF0000;
     left: 50%;
     top: 50%;
     margin: -130px -100px;

@@ -1,3 +1,4 @@
+var bulletSpeed;
 // Helper Functions
 
 /*	
@@ -18,7 +19,7 @@ function Bullet(x, y, vely, w, h, color) {
 }
 // Updates bullet velocity
 Bullet.prototype.update = function() {
-    this.y += this.vely;
+    this.y += this.vely * bulletSpeed;
 }
 
 // Screen
@@ -87,4 +88,69 @@ InputHandler.prototype.isPressed = function(code) {
         return this.pressed[code] = true;
     }
     return false;
+};
+
+function UpdatePoints(points) {
+    document.getElementById("score").textContent = 'Points: ' + points;
+};
+
+function UpdateLifes(lifes) {
+    
+    lifes++;
+    if (lifes == 0) {
+        endGame(false);
+    }
+    document.getElementById("l"+lifes).className = 'hidden';
+};
+
+function startGame() {
+    running = true;
+    hideMenuControl();
+    SetDifficulty(document.getElementById('difficulty').textContent);
+    PlaySound("startSound");
+    main();
+};
+
+function endGame(gamewon) {
+    running = false;
+    if (gamewon) {
+        document.getElementById('endScreen').innerHTML = '<p>You</p><p>won!</p>';
+        document.getElementById('endScreen').style.backgroundColor = 'rgb(60, 206, 65)';
+    }
+    else {
+        document.getElementById('endScreen').innerHTML = '<p>You</p><p>lost!</p>';
+        document.getElementById('endScreen').style.backgroundColor = '#FF0000';
+        PlaySound("gameOver");
+    }
+    hideGameControl();
+};
+
+function SetDifficulty(set) {
+    switch (set) {
+        case "easy": {
+            alShootRatio = 0.03;
+            bulletSpeed = 1;
+            break;
+        }
+        case "normal": {
+            alShootRatio = 0.06;
+            bulletSpeed = 1.5;
+            break;
+        }
+        case "hard": {
+            alShootRatio = 0.10;
+            bulletSpeed = 2.0;
+            break;
+        }
+        case "hardest": {
+            alShootRatio = 0.15;
+            bulletSpeed = 2.5;
+            break;
+        }
+        default: {
+            alShootRatio = 0.03;
+            bulletSpeed = 1;
+            break;
+        }
+    }
 };

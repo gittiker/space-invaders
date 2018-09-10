@@ -1,6 +1,7 @@
-var display, input, frames, spFrame, lvFrame;
-var alSprite, taSprite, ciSprite;
-var aliens, dir, tank, bullets, cities;
+var display, input, frames, spFrame, lvFrame, alShootRatio;
+var alSprite, taSprite, ciSprite, exSprite;
+var aliens, dir, tank, bullets, cities, lifeTank_1, lifeTank_2, lifeTank_3;
+var pointCounter, lifeCounter;
 var running = false;
 
 
@@ -36,7 +37,13 @@ function init() {
     frames = 0;
     spFrame = 0;
     lvFrame = 60; // level difficulty
+
+    SetDifficulty(document.getElementById("difficulty").textContent);
     dir = 1;
+
+    pointCounter = 0;
+    UpdatePoints(pointCounter);
+    lifeCounter = 3;
 
     bullets = [];
 
@@ -44,7 +51,9 @@ function init() {
     tank = {
         sprite: taSprite,
         x: (display.width - taSprite.w) / 2,
-        y: (display.height - (30 + taSprite.h))
+        y: (display.height - (30 + taSprite.h)),
+        w: taSprite.w,
+        h: taSprite.h
     };
 
     // create the cities object (and canvas)
@@ -153,18 +162,13 @@ function update() {
     // create new bullet when 's' is pressed
     if (input.isPressed(83)) { // 's' 83 // spacebar 32
         bullets.push(new Bullet(tank.x + 10 , tank.y, -8, 2, 6, "#fff"));
+        PlaySound("tankShoot");
     }
 
-    // if (input.isPressed(78)) { //Key n for new game
-    //     endGame();
-    //     frames = 0;
-    //     startGame();
-    // }
-
-    // godmode
-    // if (input.isDown(192) || input.isDown(221)) { //find out yourself b*tch
-    //     bullets.push(new Bullet(tank.x + 10 , tank.y, -8, 2, 6, "#fff"));
-    // }
+    // Easter Egg minigun
+    if (input.isDown(192)) {
+        bullets.push(new Bullet(tank.x + 10, tank.y, -8, 2, 6, "#fff"));
+    }
 
     // bullet logic
     // update all bullets position and checks
@@ -173,6 +177,15 @@ function update() {
 
         b.update();
         
+        // when aliens reachs cities game over
+        for (var j = 0, len2 = aliens.length; j < len2; j++) {
+            var a = aliens[j];
+            if (a.y >= tank.y - 54) {
+                GameOver();
+                continue;
+            }
+        }
+
         // remove bullet if it goes outside of canvas
         if (b.y + b.height < 0 || b.y > display.height) {
             bullets.splice(i, 1);
@@ -180,6 +193,7 @@ function update() {
             len--;
             continue;
         }
+
         // check if bullet hits any city
         var h2 = b.height*0.5; // half hight used for simplicity
         if (cities.y < b.y + h2 && b.y + h2 < cities.y + cities.h) {
@@ -190,6 +204,7 @@ function update() {
                 continue;
             }
         }
+        
         // check if bullet hit any alien
         for (var j = 0, len2 = aliens.length; j < len2; j++) {
             var a = aliens[j];
@@ -201,6 +216,17 @@ function update() {
                 bullets.splice(i, 1);
                 i--;
                 len--;
+                PlaySound("alienKill");
+
+                // sum up points when aliens got hit
+                if (a.sprite == alSprite[0]) { // blue alien
+                    pointCounter += 20;
+                } else if (a.sprite == alSprite[1]) { // pink alien
+                    pointCounter += 30; 
+                } else if (a.sprite == alSprite[2]) { // green alien
+                    pointCounter += 10;
+                }
+                UpdatePoints(pointCounter);
 
                 // increases movement frequence of aliens when there are less of them
                 switch (len2) {
@@ -224,10 +250,27 @@ function update() {
             }
         }
 
+        // If all Aliens died the game ends
+        if (aliens.length == 0) {
+            endGame(true);
+        }
+
+        // loop to check hits on tank
+        // b == bullets
+        // t = tank
+        if (AABBIntersect(b.x, b.y, b.width, b.height, tank.x, tank.y, tank.w, tank.h)) {
+            lifeCounter--;
+            bullets.splice(i, 1);
+            i--;
+            len--;
+            UpdateLifes(lifeCounter);
+            PlaySound("tankHit");
+            continue;
+        }
     }
 
     // makes the alien shoot in an random fashion 
-    if (Math.random() < 0.03 && aliens.length > 0) {
+    if (Math.random() < alShootRatio && aliens.length > 0) {
         var a = aliens[Math.round(Math.random() * (aliens.length -1))];
 
         // iterate through aliens and check collision to make sure only shoot from front line
@@ -239,6 +282,7 @@ function update() {
             }
         }
         bullets.push(new Bullet(a.x + a.w*0.5, a.y + a.h, 4, 2, 4, "#fff"));
+        PlaySound("alienShoot");
     }
 
     // update aliens at current movement frequency
@@ -288,14 +332,3 @@ function render() {
     // draw the tank sprite
     display.drawSprite(tank.sprite, tank.x, tank.y);
 };
-
-function startGame() {
-    hideMenuControl();
-    running = true;
-    main();
-};
-
-function endGame() {
-    hideGameControl();
-    running = false;
-}
