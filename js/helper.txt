@@ -94,7 +94,6 @@ function UpdateLifes(lifes) {
 
 function GameOver() {
     isRunning = false;
-    PlaySound("gameOver");
 };
 
 function WinGame() {

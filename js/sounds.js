@@ -2,7 +2,8 @@ var alienKill = new Audio("./sounds/invaderkilled.wav");
 var startSound = new Audio("./sounds/mysteryentered.wav");
 var tankHit = new Audio("./sounds/shipexplosion.wav");
 var alienShoot = new Audio("./sounds/shoot.wav");
-var tankShoot = new Audio("./sounds/shoot2.wav");
+var tankShoot = new Audio("./sounds/selfMadeShoot.wav");
+var gameOver = new Audio("./sounds/gameOver.wav");
 var soundsVolume = 0.7;
 
 function PlaySound(source) {
@@ -28,8 +29,13 @@ function PlaySound(source) {
             break;
         }
         case "tankShoot": {
+            tankShoot.volume = 1;
             tankShoot.play();
-            tankShoot.volume = soundsVolume;
+            break;
+        }
+        case "gameOver": {
+            gameOver.volume = 1;
+            gameOver.play();
             break;
         }
     }

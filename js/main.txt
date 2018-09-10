@@ -190,10 +190,6 @@ function update() {
             }
         }
 
-        // If all Aliens died the game ends
-        if (aliens.length == 0) {
-            EndGame(true);
-        }
         // loop to check bullethits on aliens
         for (var j = 0, len2 = aliens.length; j < len2; j++) {
             var a = aliens[j];
