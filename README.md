@@ -23,7 +23,7 @@ Tested with
 * Mozilla Firefox
 
 Optimized for: 
-* Microsoft Edge
+* Mozilla Firefox
 
 
 ## Known-Bugs
@@ -37,19 +37,23 @@ We used GitHub for versioning.
 
 ## Authors
 
-* **Marco Faulhaber** - *Initial work* and *programming*
-* **Domenik Rappenhoehner** - *Programming*
+* **Marco Faulhaber**       - *Base Game Programming; HTML and CSS Layout*
+* **Domenik Rappenhoehner** - *Base Game Programming; Additional functionality in the game*
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the below for details.
+This project is licensed under the MIT License - see below for details.
 
-## Acknowledgments
+## Acknowledgments and Used Contents
 
-* Starfield (Background) Photo by Jake weirick on Unsplash
+* Starfield (Background) Photo by Jake Weirick on Unsplash
 * SpaceInvaders-Font: https://www.dafont.com/de/invaders.font
+* Mute Button PNGs: www.iconsdb.com
+* Sprite Template: https://github.com/maxwihlborg/youtube-tutorials/blob/master/space-invaders/res/invaders.png
+* Code Inspiration: https://github.com/dwmkerr/spaceinvaders/blob/master/index.html
+* Sound Files: https://github.com/leerob/Space_Invaders/
 
 # License
 Copyright (c) 2018 D. Rappenhoener, M. Faulhaber
